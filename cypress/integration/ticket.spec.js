@@ -5,51 +5,66 @@ describe('tickets', () => {
     it("preecher todos os campos de texto", () =>{
         const firstName = "Jhuan"
         const lastName = "Neves"
-        cy.get('#first-name').type(firstName)
-        cy.get('#last-name').type(lastName)
-        cy.get('#email').type('jhuan.neves@gmail.com')
-        cy.get('#requests').type('vegetarian')
-        cy.get('#signature').type(`${firstName} ${lastName}`)
+        cy.get('#first-name')
+            .type(firstName)
+        cy.get('#last-name')
+            .type(lastName)
+        cy.get('#email')
+            .type('jhuan.neves@gmail.com')
+        cy.get('#requests')
+            .type('vegetarian')
+        cy.get('#signature')
+            .type(`${firstName} ${lastName}`)
         
 
     });
     it('selecionar o segundo valor na lista', () => {
-        cy.get('#ticket-quantity').select('2')
+        cy.get('#ticket-quantity')
+            .select('2')
         
     });
     it('selecionar tipo de ticket VIP', () => {
-        cy.get('#vip').check()
+        cy.get('#vip')
+            .check()
         
     });
     it('selecionar Friend', () => {
-        cy.get('#friend').check()
+        cy.get('#friend')
+            .check()
         
     });
     it('selecionar Publication e desmarcar Friend', () => {
-        cy.get('#friend').check()
-        cy.get('#publication').check()
-        cy.get('#friend').uncheck()
+        cy.get('#friend')
+            .check()
+        cy.get('#publication')
+            .check()
+        cy.get('#friend')
+            .uncheck()
         
     });
     it("has 'TICKETBOX' header´s heading", () => {
-        cy.get('header h1').should('have.text','TICKETBOX')
-        cy.get('header h1').should('contain','TICKETBOX')
-        cy.get('header h1').should('contain.text','TICKETBOX')
+        cy.get('header h1')
+            .should('have.text','TICKETBOX')
+        cy.get('header h1')
+            .should('contain','TICKETBOX')
+        cy.get('header h1')
+            .should('contain.text','TICKETBOX')
 
     });
-    // it('email invalid', () => {
-    //     cy.get('#email')
-    //     .as('email').type('mariagrk-gmail.com')     
-    //     cy.get('@email.invalid')
-    //     .as('invalid_email')
-    //     .should('exist')
-    //     cy.get('#email')
-    //     .clear()
-    //     .type('mariagrk@gmail.com');
-    //     cy.get('#email.invalid').should('not.exist')
+    it('email invalid', () => {
+        cy.get('#email')
+            .as('email')
+            .type('mariagrk-gmail.com')     
+        cy.get('@email.invalid')
+            .as('invalid_email')
+            .should('exist')
+        cy.get('#email')
+            .clear()
+            .type('mariagrk@gmail.com');
+        cy.get('#email.invalid').should('not.exist')
 
 
-    // });
+    });
     // it('Preencher todos os campos e depois resetar', () => {
     //     const firstName = "Renée"
     //     const lastName = "Azevedo"
