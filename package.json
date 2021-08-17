@@ -4,7 +4,8 @@
   "description": "Estudo do cyperss",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "cypress": "cypress open"
   },
   "keywords": [
     "cypress",
