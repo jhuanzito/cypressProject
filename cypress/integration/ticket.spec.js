@@ -1,3 +1,5 @@
+const { it } = require("mocha");
+
 describe('tickets', () => {
     beforeEach(() => {
         cy.visit('http://ticket-box.s3.eu-central-1.amazonaws.com/index.html');
@@ -65,6 +67,27 @@ describe('tickets', () => {
 
 
     });
+    // it('Test e2e',()=>{
+    //     cy.get('#first-name')
+    //         .type(firstName)
+    //     cy.get('#last-name')
+    //         .type("Neves")
+    //     cy.get('#email')
+    //         .type("")
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
     // it('Preencher todos os campos e depois resetar', () => {
     //     const firstName = "Renée"
     //     const lastName = "Azevedo"
