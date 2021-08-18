@@ -4,9 +4,10 @@ describe('tickets', () => {
     beforeEach(() => {
         cy.visit('http://ticket-box.s3.eu-central-1.amazonaws.com/index.html');
     });
+    const firstName = "Jhuan"
+    const lastName = "Neves"
     it("preecher todos os campos de texto", () =>{
-        const firstName = "Jhuan"
-        const lastName = "Neves"
+        
         cy.get('#first-name')
             .type(firstName)
         cy.get('#last-name')
@@ -67,65 +68,39 @@ describe('tickets', () => {
 
 
     });
-    // it('Test e2e',()=>{
-    //     cy.get('#first-name')
-    //         .type(firstName)
-    //     cy.get('#last-name')
-    //         .type("Neves")
-    //     cy.get('#email')
-    //         .type("")
-    // })
+    it.only('Test e2e',()=>{
+        cy.get('#first-name')
+            .type(firstName)
+        cy.get('#last-name')
+            .type(lastName)
+        cy.get('#email')
+            .type('jhuan.neves@example')
+        cy.get('#ticket-quantity')
+            .select('2')
+        cy.get('#vip')
+            .click()
+        cy.get('#friend')
+            .check()
+        cy.get('#requests')
+            .type('I want some sweet popcorn')
+        cy.get('.agreement p')
+            .should('contain','I, Jhuan Neves, wish to buy 2 VIP tickets. I understand that all ticket sales are final.')
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // it('Preencher todos os campos e depois resetar', () => {
-    //     const firstName = "Renée"
-    //     const lastName = "Azevedo"
-    //     const fullName = `${firstName} ${lastName}`
-    //     cy.get('#first-name').type(firstName)
-    //     cy.get('#last-name').type(lastName)
-    //     cy.get('#email').type('renee.moura@hotmail.com')
-    //     cy.get('#ticket-quantity').select('2')
-    //     cy.get('#vip').check()
-    //     cy.get('#social-media').check()
-    //     cy.get('#requests').type("blablablabla")
-    //     cy.get('#agree').check()
-    //     cy.get('#signature').type(fullName)
-    //     cy.get('.agreement p').should(
-    //         'contain',`I, ${fullName}, wish to buy 2 VIP tickets.`)
-    //     cy.get('button[type=submit]').
-    //     as("submitButton")
-    //     .should('not.be.disabled')    
-    //     cy.get('.reset').click()
-    //     cy.get('@submitButton').
-    //     should('be.disabled') 
-
-    // it.only('Preencher os campos obrigatórios', () => {
-    //     const customer = {
-    //         firtName: "João",
-    //         lastName: "Silva",
-    //         email: "joao_silva@example.com"
-    //     }
-    //     cy.preencherCamposObrigatórios(customer)  
-
-    //     cy.get('button[type=submit]').
-    //       as("submitButton")
-    //       .should('not.be.disabled')    
-    //       cy.get('.reset').click()
-    //       cy.get('@submitButton').
-    //       should('be.disabled') 
-    // });
+        cy.get("button[type='submit']")
+            .as("btnSubmit")
+            .should('be.disabled')
+        cy.get('#agree')
+            .click()
+        cy.get('#signature')
+            .type(`${firstName} ${lastName}`)
         
-     
-    // });
+        cy.get("@btnSubmit")
+            .click()
+        
+        cy.get('.success > p')
+            .should("contain", "Ticket(s) successfully ordered.")
+        
+        
+    })
+
 });
