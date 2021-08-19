@@ -4,7 +4,8 @@
   "description": "Estudo do cyperss",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "cypress": "cypress open"
   },
   "keywords": [
     "cypress",
@@ -15,6 +16,9 @@
   "author": "Jhuan Magno",
   "license": "MIT",
   "dependencies": {
-    "cypress": "^8.2.0"
+    "cypress": "^8.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.3"
   }
 }
