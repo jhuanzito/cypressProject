@@ -68,7 +68,7 @@ describe('tickets', () => {
 
 
     });
-    it.only('Test e2e',()=>{
+    it('Test e2e',()=>{
         cy.get('#first-name')
             .type(firstName)
         cy.get('#last-name')
