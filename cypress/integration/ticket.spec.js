@@ -102,5 +102,24 @@ describe('tickets', () => {
         
         
     })
+    it.only("fills mandatory fields", ()=>{
+        const costumer = {
+            firstName:"João",
+            lastName:"Silva",
+            email:"joaosilva@example"
+        }
+
+        cy.fillMandatoryFields(costumer)
+
+        cy.get('#agree')
+            .uncheck()
+
+        cy.get("button[type='submit']")
+            .should('be.disabled')
+
+        
+
+
+    })
 
 });
